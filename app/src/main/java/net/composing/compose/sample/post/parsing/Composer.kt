@@ -2,12 +2,11 @@ package net.composing.compose.sample.post.parsing
 
 import android.content.Context
 import android.os.Build.VERSION.SDK_INT
-import androidx.compose.foundation.background
+import android.webkit.WebView
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
@@ -17,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
 import coil.ImageLoader
 import coil.decode.GifDecoder
 import coil.decode.ImageDecoderDecoder
@@ -43,7 +43,7 @@ private fun Draw(component: Component) {
         is Image -> DrawImage(image = component)
         is GifImage -> DrawGifImage(image = component)
         is Paragraph -> DrawParagraph(paragraph = component)
-        is Newsletter -> DrawNewsletter()
+        is Newsletter -> DrawNewsletter(newsletter = component)
         else -> Unit
     }
 }
@@ -122,14 +122,15 @@ private fun DrawParagraph(paragraph: Paragraph) {
 }
 
 @Composable
-private fun DrawNewsletter() {
+private fun DrawNewsletter(newsletter: Newsletter) {
     Box(modifier = Modifier
         .fillMaxWidth()
-        .requiredHeight(96.dp)
-        .padding(all = 8.dp)
-        .background(MaterialTheme.colors.primary)) {
+        .padding(all = 8.dp)) {
 
-        Text(text = "NEWSLETTER")
+        AndroidView(factory = { context -> WebView(context) }) { webview ->
+            webview.settings.javaScriptEnabled = true
+            webview.loadData(newsletter.rawHtml, "text/html; charset=utf-8", "UTF-8")
+        }
     }
 }
 

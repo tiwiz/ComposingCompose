@@ -85,7 +85,8 @@ private fun parseDiv(element: Element): Component {
             imageFor(link = imageLink, caption = caption)
         }
         element.id().equals("mc_embed_signup", ignoreCase = false) -> {
-            Newsletter
+            val html = "${element.html()}\n$FORM_SCRIPT"
+            Newsletter(rawHtml = html)
         }
         else -> {
             EmptyComponent

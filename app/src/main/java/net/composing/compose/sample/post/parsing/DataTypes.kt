@@ -12,7 +12,7 @@ data class GifImage(val link: String, val caption: String?) : Component()
 
 data class Paragraph(val text: String, val title: String? = null) : Component()
 
-object Newsletter : Component()
+data class Newsletter(val rawHtml: String) : Component()
 
 object EmptyComponent: Component()
 
