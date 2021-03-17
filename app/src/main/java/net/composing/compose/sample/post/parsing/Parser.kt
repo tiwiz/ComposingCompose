@@ -61,13 +61,13 @@ private fun parseParagraph(element: Element): Component {
         null
     }
 
-    val content = if (title != null) {
-        element.text().replaceFirst(title, "").trim()
-    } else {
-        element.text().trim()
-    }
+    val paragraphs = element.toParagraphWithLinks(title)
 
-    return Paragraph(text = content, title = title)
+    return if (paragraphs.size == 1 && paragraphs.first().link == null) {
+        Paragraph(title = title, text = paragraphs.first().caption)
+    } else {
+        LinkifiedParagraph(title = title, text = element.toParagraphWithLinks(title))
+    }
 }
 
 private fun parseParagraphImage(element: Element): Component =

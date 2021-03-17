@@ -1,4 +1,4 @@
-package it.ilpost.android.ui.theme
+package net.composing.compose.sample.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.graphics.Color
@@ -14,7 +14,8 @@ val lightTypography = Typography(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Light,
         fontSize = 16.sp,
-        color = Color.Black
+        color = Color.Black,
+        textAlign = TextAlign.Justify
     ),
     caption = TextStyle(
         fontFamily = FontFamily.Default,
@@ -66,7 +67,8 @@ val darkTypography = Typography(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Light,
         fontSize = 16.sp,
-        color = Color.White
+        color = Color.White,
+        textAlign = TextAlign.Justify
     ),
     caption = TextStyle(
         fontFamily = FontFamily.Default,

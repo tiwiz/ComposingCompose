@@ -12,6 +12,10 @@ data class GifImage(val link: String, val caption: String?) : Component()
 
 data class Paragraph(val text: String, val title: String? = null) : Component()
 
+data class LinkifiedText(val caption: String, val link : String? = null)
+
+data class LinkifiedParagraph(val text: List<LinkifiedText>, val title: String? = null) : Component()
+
 data class Newsletter(val rawHtml: String) : Component()
 
 object EmptyComponent: Component()
