@@ -1,26 +1,45 @@
 package net.composing.compose.sample
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
+import net.composing.compose.sample.Navigation.ACCORDION
+import net.composing.compose.sample.Navigation.ARTICLE
+import net.composing.compose.sample.Navigation.HOME
+import net.composing.compose.sample.accordion.AccordionUI
+import net.composing.compose.sample.home.HomeUI
 import net.composing.compose.sample.post.parsing.PostParsingUI
 
+@ExperimentalAnimationApi
 @Composable
 fun MainUI() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Navigation.ARTICLE.asString) {
-        composable(Navigation.HOME.asString) {
+    fun Navigation.go() {
+        navController.navigate(asString)
+    }
 
+    NavHost(navController = navController, startDestination = HOME.asString) {
+        composable(HOME.asString) {
+            HomeUI(
+                onPostParsingClicked = { ARTICLE.go() },
+                onAccordionExampleClicked = { ACCORDION.go() }
+            )
         }
-        composable(Navigation.ARTICLE.asString) {
+        composable(ARTICLE.asString) {
             PostParsingUI()
+        }
+        composable(ACCORDION.asString) {
+            AccordionUI()
         }
     }
 }
 
 enum class Navigation(val asString: String) {
     HOME("home"),
-    ARTICLE("article-parsing")
+    ARTICLE("article-parsing"),
+    ACCORDION("accordion-sample")
 }
