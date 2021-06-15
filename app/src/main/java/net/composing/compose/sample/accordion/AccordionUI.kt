@@ -28,7 +28,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private const val LOREM_IPSUM =
+const val LOREM_IPSUM =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam suscipit, dui vel lobortis dignissim, libero sapien finibus dui, ut vehicula metus ipsum at nisi. Maecenas eget pulvinar quam. Etiam rutrum mauris eu massa imperdiet convallis. Nam suscipit tortor eget imperdiet bibendum. Nullam sed commodo nibh. Integer commodo nibh sit amet mattis facilisis. Etiam sed enim non lectus molestie euismod a id urna."
 
 @ExperimentalAnimationApi

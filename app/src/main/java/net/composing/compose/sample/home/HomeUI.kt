@@ -18,9 +18,16 @@ import androidx.compose.ui.unit.dp
 import net.composing.compose.sample.ui.theme.ComposingComposeTheme
 
 @Composable
+fun buttonColors() =
+    textButtonColors(
+        backgroundColor = MaterialTheme.colors.primary
+    )
+
+@Composable
 fun HomeUI(
     onPostParsingClicked: () -> Unit = {},
-    onAccordionExampleClicked: () -> Unit = {}
+    onAccordionExampleClicked: () -> Unit = {},
+    onDialogSampleClicked: () -> Unit = {}
 ) {
 
     Column(
@@ -31,9 +38,7 @@ fun HomeUI(
     ) {
         Button(
             onClick = onPostParsingClicked,
-            colors = textButtonColors(
-                backgroundColor = MaterialTheme.colors.primary
-            ),
+            colors = buttonColors(),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(all = 16.dp)
@@ -46,15 +51,26 @@ fun HomeUI(
 
         Button(
             onClick = onAccordionExampleClicked,
-            colors = textButtonColors(
-                backgroundColor = MaterialTheme.colors.primary
-            ),
+            colors = buttonColors(),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(all = 16.dp)
         ) {
             Text(
                 text = "Accordion sample".uppercase(),
+                color = MaterialTheme.colors.background
+            )
+        }
+
+        Button(
+            onClick = onDialogSampleClicked,
+            colors = buttonColors(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(all = 16.dp)
+        ) {
+            Text(
+                text = "Dialog sample".uppercase(),
                 color = MaterialTheme.colors.background
             )
         }
