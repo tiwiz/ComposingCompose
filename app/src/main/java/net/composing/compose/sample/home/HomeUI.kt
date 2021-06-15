@@ -16,7 +16,6 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import net.composing.compose.sample.ui.theme.ComposingComposeTheme
-import java.util.Locale
 
 @Composable
 fun HomeUI(
@@ -40,7 +39,7 @@ fun HomeUI(
                 .padding(all = 16.dp)
         ) {
             Text(
-                text = "Post Parsing".toUpperCase(Locale.getDefault()),
+                text = "Post Parsing".uppercase(),
                 color = MaterialTheme.colors.background
             )
         }
@@ -55,7 +54,7 @@ fun HomeUI(
                 .padding(all = 16.dp)
         ) {
             Text(
-                text = "Accordion sample".toUpperCase(Locale.getDefault()),
+                text = "Accordion sample".uppercase(),
                 color = MaterialTheme.colors.background
             )
         }

@@ -3,6 +3,7 @@ package net.composing.compose.sample.post.parsing
 import android.content.Context
 import android.os.Build.VERSION.SDK_INT
 import android.webkit.WebView
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,7 +28,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import coil.ImageLoader
 import coil.decode.GifDecoder
 import coil.decode.ImageDecoderDecoder
-import dev.chrisbanes.accompanist.coil.CoilImage
+import com.google.accompanist.coil.rememberCoilPainter
 
 @Composable
 fun DrawBlogPost(article: Article) {
@@ -78,8 +79,8 @@ private fun DrawHeader(header: Header) {
 @Composable
 private fun DrawImage(image: Image) {
     DisableSelection {
-        CoilImage(
-            data = image.link,
+        Image(
+            painter = rememberCoilPainter(request = image.link),
             contentDescription = image.caption,
             modifier = Modifier
                 .fillMaxWidth()
@@ -99,10 +100,12 @@ private fun DrawImage(image: Image) {
 @Composable
 private fun DrawGifImage(image: GifImage) {
     DisableSelection {
-        CoilImage(
-            data = image.link,
+        Image(
+            painter = rememberCoilPainter(
+                request = image.link,
+                imageLoader = gifImageLoader(LocalContext.current)
+            ),
             contentDescription = image.caption,
-            imageLoader = gifImageLoader(LocalContext.current),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 4.dp, top = 8.dp)
