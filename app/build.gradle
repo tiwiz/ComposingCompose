@@ -40,6 +40,10 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion "1.0.4"
     }
+
+    packagingOptions {
+        exclude 'META-INF/*'
+    }
 }
 
 dependencies {
@@ -82,4 +86,6 @@ dependencies {
     testImplementation "org.mockito.kotlin:mockito-kotlin:3.2.0"
 
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.0.4")
+
+    debugImplementation("androidx.compose.ui:ui-test-manifest:1.0.4")
 }
