@@ -27,7 +27,8 @@ fun buttonColors() =
 fun HomeUI(
     onPostParsingClicked: () -> Unit = {},
     onAccordionExampleClicked: () -> Unit = {},
-    onDialogSampleClicked: () -> Unit = {}
+    onDialogSampleClicked: () -> Unit = {},
+    onSimpleUiClicked: () -> Unit = {}
 ) {
 
     Column(
@@ -71,6 +72,19 @@ fun HomeUI(
         ) {
             Text(
                 text = "Dialog sample".uppercase(),
+                color = MaterialTheme.colors.background
+            )
+        }
+
+        Button(
+            onClick = onSimpleUiClicked,
+            colors = buttonColors(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(all = 16.dp)
+        ) {
+            Text(
+                text = "Simple UI".uppercase(),
                 color = MaterialTheme.colors.background
             )
         }

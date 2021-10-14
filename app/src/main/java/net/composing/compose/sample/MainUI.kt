@@ -9,10 +9,12 @@ import net.composing.compose.sample.Navigation.ACCORDION
 import net.composing.compose.sample.Navigation.ARTICLE
 import net.composing.compose.sample.Navigation.DIALOG
 import net.composing.compose.sample.Navigation.HOME
+import net.composing.compose.sample.Navigation.SIMPLE_UI
 import net.composing.compose.sample.accordion.AccordionUI
 import net.composing.compose.sample.dialog.DialogUI
 import net.composing.compose.sample.home.HomeUI
 import net.composing.compose.sample.post.parsing.PostParsingUI
+import net.composing.compose.sample.simpleui.SimpleUI
 
 @ExperimentalAnimationApi
 @Composable
@@ -28,7 +30,8 @@ fun MainUI() {
             HomeUI(
                 onPostParsingClicked = { ARTICLE.go() },
                 onAccordionExampleClicked = { ACCORDION.go() },
-                onDialogSampleClicked = { DIALOG.go() }
+                onDialogSampleClicked = { DIALOG.go() },
+                onSimpleUiClicked = { SIMPLE_UI.go() }
             )
         }
         composable(ARTICLE.asString) {
@@ -40,6 +43,9 @@ fun MainUI() {
         composable(DIALOG.asString) {
             DialogUI()
         }
+        composable(SIMPLE_UI.asString) {
+            SimpleUI()
+        }
     }
 }
 
@@ -47,5 +53,6 @@ enum class Navigation(val asString: String) {
     HOME("home"),
     ARTICLE("article-parsing"),
     ACCORDION("accordion-sample"),
-    DIALOG("dialog")
+    DIALOG("dialog"),
+    SIMPLE_UI("simple-ui")
 }
