@@ -26,9 +26,10 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import coil.ImageLoader
+import coil.compose.rememberImagePainter
 import coil.decode.GifDecoder
 import coil.decode.ImageDecoderDecoder
-import com.google.accompanist.coil.rememberCoilPainter
+import coil.request.ImageRequest
 
 @Composable
 fun DrawBlogPost(article: Article) {
@@ -80,7 +81,7 @@ private fun DrawHeader(header: Header) {
 private fun DrawImage(image: Image) {
     DisableSelection {
         Image(
-            painter = rememberCoilPainter(request = image.link),
+            painter = rememberImagePainter(image.link),
             contentDescription = image.caption,
             modifier = Modifier
                 .fillMaxWidth()
@@ -100,9 +101,11 @@ private fun DrawImage(image: Image) {
 @Composable
 private fun DrawGifImage(image: GifImage) {
     DisableSelection {
+        val imageRequest = ImageRequest.Builder(LocalContext.current)
+            .data(image.link).build()
         Image(
-            painter = rememberCoilPainter(
-                request = image.link,
+            painter = rememberImagePainter(
+                request = imageRequest,
                 imageLoader = gifImageLoader(LocalContext.current)
             ),
             contentDescription = image.caption,
