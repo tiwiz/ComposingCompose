@@ -28,7 +28,8 @@ fun HomeUI(
     onPostParsingClicked: () -> Unit = {},
     onAccordionExampleClicked: () -> Unit = {},
     onDialogSampleClicked: () -> Unit = {},
-    onSimpleUiClicked: () -> Unit = {}
+    onSimpleUiClicked: () -> Unit = {},
+    onNestedNavigationClicked: () -> Unit = {}
 ) {
 
     Column(
@@ -85,6 +86,19 @@ fun HomeUI(
         ) {
             Text(
                 text = "Simple UI".uppercase(),
+                color = MaterialTheme.colors.background
+            )
+        }
+
+        Button(
+            onClick = onNestedNavigationClicked,
+            colors = buttonColors(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(all = 16.dp)
+        ) {
+            Text(
+                text = "Nested navigation".uppercase(),
                 color = MaterialTheme.colors.background
             )
         }

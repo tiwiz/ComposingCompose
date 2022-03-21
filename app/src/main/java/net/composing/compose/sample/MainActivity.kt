@@ -14,6 +14,7 @@ import net.composing.compose.sample.ui.theme.ComposingComposeTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
     @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
